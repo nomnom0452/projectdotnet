@@ -1,0 +1,34 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Layout.master.cs" Inherits="WOKtch.views.layout.Layout" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h1> <a href="/views/HomePage.aspx"> WOKtch </a></h1>
+        <asp:Label ID="greetingLb" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Label ID="dateLb" runat="server" Text=""></asp:Label>
+        <br />
+        <asp:Button ID="loginBtn" runat="server" Text="Login" OnClick="loginBtn_Click"/>
+        <asp:Button ID="registerBtn" runat="server" Text="Register" OnClick="registerBtn_Click"/>
+        <asp:Button ID="LogoutBtn" runat="server" Text="Logout" OnClick="LogoutBtn_Click"/>
+        <asp:Button ID="profileBtn" runat="server" Text="Profile" OnClick="profileBtn_Click"/>
+        <asp:Button ID="viewMemberBtn" runat="server" Text="View Member" OnClick="viewMemberBtn_Click"/>
+        <asp:Button ID="cartBtn" runat="server" Text="My Cart" OnClick="cartBtn_Click"/>
+        <asp:Button ID="transcationPageBtn" runat="server" Text="Transaction" OnClick="transcationPageBtn_Click"/>
+    </div>
+    <div>
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

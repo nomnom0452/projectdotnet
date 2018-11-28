@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities1">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="DatabaseModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WatchName" ColumnName="WatchName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="WatchPicture" ColumnName="WatchPicture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DatabaseModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

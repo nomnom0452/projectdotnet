@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberEmail" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductQuantity" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HeaderTransaction">
+    <Key>
+      <PropertyRef Name="HeaderTransactionId" />
+    </Key>
+    <Property Name="HeaderTransactionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TransactionDate" Type="date" Nullable="false" />
+    <Property Name="TransactionStatus" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MemberEmail" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Member">
+    <Key>
+      <PropertyRef Name="MemberEmail" />
+    </Key>
+    <Property Name="MemberEmail" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MemberName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MemberPassword" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MemberGender" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="MemberDoB" Type="date" Nullable="false" />
+    <Property Name="MemberProfilePicture" Type="varchar" MaxLength="255" />
+    <Property Name="MemberPhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="MemberAddress" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="MemberRole" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="ProductPrice" Type="int" Nullable="false" />
+    <Property Name="ProductStock" Type="int" Nullable="false" />
+    <Property Name="ProductPicture" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Review">
+    <Key>
+      <PropertyRef Name="ReviewId" />
+    </Key>
+    <Property Name="ReviewId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReviewDescription" Type="varchar" MaxLength="255" />
+    <Property Name="ReviewRating" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="MemberEmail" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TransactionDetail">
+    <Key>
+      <PropertyRef Name="TransactionDetailId" />
+    </Key>
+    <Property Name="TransactionDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HeaderTransactionId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="ProductQuantity" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cart_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberEmail" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="MemberEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HeaderTransaction_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberEmail" />
+      </Principal>
+      <Dependent Role="HeaderTransaction">
+        <PropertyRef Name="MemberEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Member">
+    <End Role="Member" Type="Self.Member" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Member">
+        <PropertyRef Name="MemberEmail" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="MemberEmail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Review_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Review" Type="Self.Review" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="Review">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetail_HeaderTransaction">
+    <End Role="HeaderTransaction" Type="Self.HeaderTransaction" Multiplicity="1" />
+    <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HeaderTransaction">
+        <PropertyRef Name="HeaderTransactionId" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="HeaderTransactionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TransactionDetail_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="TransactionDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Database1ModelStoreContainer">
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HeaderTransaction" EntityType="Self.HeaderTransaction" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Member" EntityType="Self.Member" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TransactionDetail" EntityType="Self.TransactionDetail" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cart_Member" Association="Self.FK_Cart_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_Product" Association="Self.FK_Cart_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HeaderTransaction_Member" Association="Self.FK_HeaderTransaction_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Member" Association="Self.FK_Review_Member">
+      <End Role="Member" EntitySet="Member" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Review_Product" Association="Self.FK_Review_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Review" EntitySet="Review" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetail_HeaderTransaction" Association="Self.FK_TransactionDetail_HeaderTransaction">
+      <End Role="HeaderTransaction" EntitySet="HeaderTransaction" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TransactionDetail_Product" Association="Self.FK_TransactionDetail_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="TransactionDetail" EntitySet="TransactionDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

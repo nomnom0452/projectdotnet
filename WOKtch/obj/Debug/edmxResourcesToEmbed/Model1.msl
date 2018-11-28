@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="Database1Model.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="MemberEmail" ColumnName="MemberEmail" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HeaderTransactions">
+      <EntityTypeMapping TypeName="Database1Model.HeaderTransaction">
+        <MappingFragment StoreEntitySet="HeaderTransaction">
+          <ScalarProperty Name="HeaderTransactionId" ColumnName="HeaderTransactionId" />
+          <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
+          <ScalarProperty Name="TransactionStatus" ColumnName="TransactionStatus" />
+          <ScalarProperty Name="MemberEmail" ColumnName="MemberEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Members">
+      <EntityTypeMapping TypeName="Database1Model.Member">
+        <MappingFragment StoreEntitySet="Member">
+          <ScalarProperty Name="MemberEmail" ColumnName="MemberEmail" />
+          <ScalarProperty Name="MemberName" ColumnName="MemberName" />
+          <ScalarProperty Name="MemberPassword" ColumnName="MemberPassword" />
+          <ScalarProperty Name="MemberGender" ColumnName="MemberGender" />
+          <ScalarProperty Name="MemberDoB" ColumnName="MemberDoB" />
+          <ScalarProperty Name="MemberProfilePicture" ColumnName="MemberProfilePicture" />
+          <ScalarProperty Name="MemberPhoneNumber" ColumnName="MemberPhoneNumber" />
+          <ScalarProperty Name="MemberAddress" ColumnName="MemberAddress" />
+          <ScalarProperty Name="MemberRole" ColumnName="MemberRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="Database1Model.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductStock" ColumnName="ProductStock" />
+          <ScalarProperty Name="ProductPicture" ColumnName="ProductPicture" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reviews">
+      <EntityTypeMapping TypeName="Database1Model.Review">
+        <MappingFragment StoreEntitySet="Review">
+          <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
+          <ScalarProperty Name="ReviewDescription" ColumnName="ReviewDescription" />
+          <ScalarProperty Name="ReviewRating" ColumnName="ReviewRating" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="MemberEmail" ColumnName="MemberEmail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionDetails">
+      <EntityTypeMapping TypeName="Database1Model.TransactionDetail">
+        <MappingFragment StoreEntitySet="TransactionDetail">
+          <ScalarProperty Name="TransactionDetailId" ColumnName="TransactionDetailId" />
+          <ScalarProperty Name="HeaderTransactionId" ColumnName="HeaderTransactionId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
